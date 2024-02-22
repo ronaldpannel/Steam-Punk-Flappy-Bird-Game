@@ -16,7 +16,7 @@ class Game {
     this.background = new Background(this);
     this.player = new Player(this);
     this.obstaclesArray = [];
-    this.numOfObstacles = 1;
+    this.numOfObstacles = 15;
     this.resize(window.innerWidth, window.innerHeight);
     this.score;
     this.gameOver;
