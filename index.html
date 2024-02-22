@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Base Canvas Code</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <canvas class="canvas1" id="canvas1"> </canvas>
+    <button id="startBtn" class="startBtn" btn>S</button>
+    <button id="fullScreenBtn" class="fullScreenBtn" btn>FS</button>
+    <div class="assets">
+      <img id="backgroundImg" src="background_single.png" alt="" />
+      <img id="smallGearsImg" src="smallGears.png" alt="" />
+      <img id="playerImg" src="player_fish.png" alt="" />
+    </div>
+    <audio id="flap1" src="flap1.mp3"></audio>
+    <audio id="flap2" src="flap2.mp3"></audio>
+    <audio id="flap3" src="flap3.mp3"></audio>
+    <audio id="flap4" src="flap4.mp3"></audio>
+    <audio id="flap5" src="flap5.mp3"></audio>
+    <audio id="lose" src="lose.mp3"></audio>
+    <audio id="win" src="win.mp3"></audio>
+    <audio id="charge" src="charge.mp3"></audio>
+
+    <script src="audioControl.js"></script>
+    <script src="backgrond.js"></script>
+    <script src="player.js"></script>
+    <script src="obsticle.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
