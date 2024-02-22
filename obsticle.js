@@ -29,7 +29,7 @@ class Obstacle {
     } else {
       this.speedY += 0.1;
     }
-    if (this.isOffScreen()) {
+    if (this.isOffScreen() && !this.game.gameOver) {
       this.markedForDeletion = true;
       this.game.obstaclesArray = this.game.obstaclesArray.filter(
         (obstacle) => !obstacle.markedForDeletion

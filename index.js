@@ -71,6 +71,7 @@ class Game {
 
     //touch events
     this.canvas.addEventListener("touchstart", (e) => {
+      e.preventDefault();
       this.player.flap();
       this.touchStartX = e.changedTouches[0].pageX;
     });
@@ -78,6 +79,7 @@ class Game {
       e.preventDefault();
     });
     this.canvas.addEventListener("touchend", (e) => {
+      e.preventDefault();
       if (e.changedTouches[0].pageX - this.touchStartX > this.swipeDistance) {
         console.log("xxxx");
         this.player.startCharge();
