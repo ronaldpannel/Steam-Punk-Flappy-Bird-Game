@@ -32,6 +32,8 @@ class Game {
     this.touchStartX;
     this.swipeDistance = 50;
     this.debug = false;
+    this.startGame = false;
+    this.startScreen = document.getElementById("startScreen");
 
     window.addEventListener("resize", (e) => {
       this.resize(e.currentTarget.innerWidth, e.currentTarget.innerHeight);
@@ -87,14 +89,18 @@ class Game {
       }
     });
     //button controls
-    this.startBtn = document.getElementById("startBtn");
+    this.restartBtn = document.getElementById("restartBtn");
     this.fullScreenBtn = document.getElementById("fullScreenBtn");
+    this.startBtn = document.getElementById("startBtn");
 
-    this.startBtn.addEventListener("click", (e) => {
+    this.restartBtn.addEventListener("click", (e) => {
       location.reload();
     });
     this.fullScreenBtn.addEventListener("click", (e) => {
       this.toggleFullScreen();
+    });
+    this.startBtn.addEventListener("click", (e) => {
+      this.start();
     });
   }
   resize(width, height) {
@@ -138,6 +144,11 @@ class Game {
       obstacle.update();
       obstacle.draw();
     });
+  }
+  start() {
+    this.startGame = true;
+    this.startScreen.classList.add("inactive");
+    console.log(this.startGame);
   }
   toggleFullScreen() {
     if (!document.fullscreenElement) {
@@ -202,11 +213,11 @@ class Game {
       if (this.player.collided) {
         this.message1 = "Getting Rusty";
         this.message2 = `Collision Time: ${this.formatTimer()} seconds`;
-        this.startBtn.classList.add("active");
+        this.restartBtn.classList.add("active");
       } else if (this.obstaclesArray.length <= 0) {
         this.message1 = "You Win Nailed it!";
         this.message2 = `Can you do it faster: ${this.formatTimer()} seconds`;
-        this.startBtn.classList.add("active");
+        this.restartBtn.classList.add("active");
       }
       this.ctx.textAlign = "center";
       this.ctx.font = this.largeFont + "px Roboto";
@@ -252,15 +263,15 @@ window.addEventListener("load", function () {
   const ctx = canvas.getContext("2d");
   canvas.width = 720;
   canvas.height = 720;
-
   const game = new Game(canvas, ctx);
+
   let lastTime = 0;
   function animate(timeStamp) {
     const deltaTime = timeStamp - lastTime;
     lastTime = timeStamp;
     //ctx.clearRect(0, 0, canvas.width, canvas.height);
-    game.render(deltaTime);
-
+    if (game.startGame) game.render(deltaTime);
+    console.log(game.startGame);
     requestAnimationFrame(animate);
   }
   animate(0);
